@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const login = require('./.env');
 
 const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
 
 mongoose.connect(
     `mongodb+srv://${login.user}:${login.password}@cluster0.a96nw.mongodb.net/test?retryWrites=true&w=majority`,
@@ -26,5 +27,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/stuff', stuffRoutes);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
